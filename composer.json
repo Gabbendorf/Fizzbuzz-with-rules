@@ -1,0 +1,26 @@
+{
+    "name": "gabi/fizzbuzz_with_rules",
+    "description": "a fizzbuzz command line application",
+    "type": "project",
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabba",
+            "email": "gmedas@8thlight.com"
+        }
+    ],
+    "config": {
+      "bin-dir": "bin"
+    },
+    "autoload": {
+      "psr-4": {
+	"gabi\\fizzbuzz\\": "src/"
+      }
+    }
+}
