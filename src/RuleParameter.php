@@ -4,7 +4,8 @@ namespace gabi\fizzbuzz;
 
 use gabi\fizzbuzz\MyEnum;
 
-class RuleParameter extends MyEnum {
+class RuleParameter
+{
   const FIZZ = "fizz";
   const BUZZ = "buzz";
   const FIZZBUZZ = "fizzbuzz";

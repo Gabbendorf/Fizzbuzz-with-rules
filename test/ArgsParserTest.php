@@ -4,6 +4,7 @@ namespace unit\gabi\fizzbuzz;
 
 use gabi\fizzbuzz\ArgsParser;
 use gabi\fizzbuzz\Args;
+use gabi\fizzbuzz\RuleParameter;
 use gabi\fizzbuzz\exceptions\RangeArgumentNotFoundException;
 use gabi\fizzbuzz\exceptions\NonNumericRangeArgumentException;
 use gabi\fizzbuzz\exceptions\InvalidRuleArgumentException;
@@ -55,7 +56,7 @@ class ArgsParserTest extends TestCase
 
     $parsedArgs = $this->argsParser->parse($argsWithSingleRuleArgument);
 
-    $this->assertSame("fizz", $parsedArgs->getRule());
+    $this->assertSame(RuleParameter::FIZZ, $parsedArgs->getRule());
   }
 
   /**
@@ -72,7 +73,7 @@ class ArgsParserTest extends TestCase
 
     $parsedArgs = $this->argsParser->parse($argsWith2ValidRuleArguments);
 
-    $this->assertSame("fizzAndBuzz", $parsedArgs->getRule());
+    $this->assertSame(RuleParameter::FIZZ_BUZZ, $parsedArgs->getRule());
   }
 
   /**
@@ -89,7 +90,7 @@ class ArgsParserTest extends TestCase
 
     $parsedArgs = $this->argsParser->parse($argsWith3ValidRuleArguments);
 
-    $this->assertSame("fizzAndBuzzAndFizzbuzz", $parsedArgs->getRule());
+    $this->assertSame(RuleParameter::FIZZ_BUZZ_FIZZBUZZ, $parsedArgs->getRule());
   }
 
   /**

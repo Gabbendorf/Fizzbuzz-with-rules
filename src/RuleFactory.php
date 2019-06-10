@@ -2,20 +2,22 @@
 
 namespace gabi\fizzbuzz;
 
+use gabi\fizzbuzz\RuleParameter;
+
 class RuleFactory
 {
   public function createFrom(string $ruleParameter)
   {
     switch($ruleParameter) {
-    case "fizz":
+    case RuleParameter::FIZZ:
       return new FizzRule();
-    case "buzz":
+    case RuleParameter::BUZZ:
       return new BuzzRule();
-    case "fizzbuzz":
+    case RuleParameter::FIZZBUZZ:
       return new FizzbuzzRule();
-    case "fizzAndBuzz":
+    case RuleParameter::FIZZ_BUZZ:
       return new CombinedRule(new FizzRule(), new BuzzRule());
-    case "fizzAndBuzzAndFizzbuzz":
+    case RuleParameter::FIZZ_BUZZ_FIZZBUZZ:
       $fizzBuzzCombinedRule = new CombinedRule(new FizzRule(), new BuzzRule());
       return new CombinedRule(new FizzbuzzRule(), $fizzBuzzCombinedRule);
     default:

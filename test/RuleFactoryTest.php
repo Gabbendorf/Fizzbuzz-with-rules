@@ -18,37 +18,37 @@ class RuleFactoryTest extends TestCase
    }
 
   public function testCreatesFizzRuleFromRuleParameter() {
-    $rule = $this->ruleFactory->createFrom("fizz");
+    $rule = $this->ruleFactory->createFrom(RuleParameter::FIZZ);
 
     $this->assertTrue($rule instanceof FizzRule);
   }
 
   public function testCreatesBuzzRuleFromBuzzParameter() {
-    $rule = $this->ruleFactory->createFrom("buzz");
+    $rule = $this->ruleFactory->createFrom(RuleParameter::BUZZ);
 
     $this->assertTrue($rule instanceof BuzzRule);
   }
 
   public function testCreatesFizzbuzzRuleFromFizzbuzzParameter() {
-    $rule = $this->ruleFactory->createFrom("fizzbuzz");
+    $rule = $this->ruleFactory->createFrom(RuleParameter::FIZZBUZZ);
 
     $this->assertTrue($rule instanceof FizzbuzzRule);
   }
 
   public function testCreatesFizzBuzzCombinedRuleFromFizzAndBuzzParameter() {
-    $rule = $this->ruleFactory->createFrom("fizzAndBuzz");
+    $rule = $this->ruleFactory->createFrom(RuleParameter::FIZZ_BUZZ);
 
     $this->assertTrue($rule instanceof CombinedRule);
   }
 
   public function testCreatesFizzBuzzFizzbuzzCombinedRuleFromFizzAndBuzzAndFizzbuzzParameter() {
-    $rule = $this->ruleFactory->createFrom("fizzAndBuzzAndFizzbuzz");
+    $rule = $this->ruleFactory->createFrom(RuleParameter::FIZZ_BUZZ_FIZZBUZZ);
 
     $this->assertTrue($rule instanceof CombinedRule);
   }
 
   public function testCreatesFizzRuleByDefaultFromANonStandardParameter() {
-    $rule = $this->ruleFactory->createFrom("");
+    $rule = $this->ruleFactory->createFrom("default");
 
     $this->assertTrue($rule instanceof FizzRule);
   }
