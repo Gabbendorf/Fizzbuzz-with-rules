@@ -6,8 +6,7 @@ use gabi\fizzbuzz\RuleFactory;
 use gabi\fizzbuzz\FizzRule;
 use gabi\fizzbuzz\BuzzRule;
 use gabi\fizzbuzz\FizzbuzzRule;
-use gabi\fizzbuzz\FizzBuzzCombinedRule;
-use gabi\fizzbuzz\FizzBuzzFizzbuzzRule;
+use gabi\fizzbuzz\CombinedRule;
 use gabi\fizzbuzz\RuleParameter;
 use PHPUnit\Framework\TestCase;
 
@@ -38,13 +37,13 @@ class RuleFactoryTest extends TestCase {
   public function testCreatesFizzBuzzCombinedRuleFromFizzAndBuzzParameter() {
     $rule = $this->ruleFactory->createFrom("fizzAndBuzz");
 
-    $this->assertTrue($rule instanceof FizzBuzzCombinedRule);
+    $this->assertTrue($rule instanceof CombinedRule);
   }
 
-  public function testCreatesFizzBuzzFizzbuzzRuleFromFizzAndBuzzAndFizzbuzzParameter() {
+  public function testCreatesFizzBuzzFizzbuzzCombinedRuleFromFizzAndBuzzAndFizzbuzzParameter() {
     $rule = $this->ruleFactory->createFrom("fizzAndBuzzAndFizzbuzz");
 
-    $this->assertTrue($rule instanceof FizzBuzzFizzbuzzRule);
+    $this->assertTrue($rule instanceof CombinedRule);
   }
 
   public function testCreatesFizzRuleByDefaultFromANonStandardParameter() {

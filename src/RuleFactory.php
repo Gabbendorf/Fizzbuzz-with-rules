@@ -13,10 +13,10 @@ class RuleFactory {
     case "fizzbuzz":
       return new FizzbuzzRule();
     case "fizzAndBuzz":
-      return new FizzBuzzCombinedRule(new FizzRule(), new BuzzRule());
+      return new CombinedRule(new FizzRule(), new BuzzRule());
     case "fizzAndBuzzAndFizzbuzz":
-      $fizzBuzzCombinedRule = new FizzBuzzCombinedRule(new FizzRule(), new BuzzRule());
-      return new FizzBuzzFizzbuzzRule($fizzBuzzCombinedRule, new FizzbuzzRule());
+      $fizzBuzzCombinedRule = new CombinedRule(new FizzRule(), new BuzzRule());
+      return new CombinedRule(new FizzbuzzRule(), $fizzBuzzCombinedRule);
     default:
       return new FizzRule();
     }
