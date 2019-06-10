@@ -10,23 +10,29 @@ use gabi\fizzbuzz\RuleParameter;
 class ArgsParser
 {
   const FIZZ_BUZZ_AND_FIZZBUZZ = array("fizz", "buzz", "fizzbuzz");
+  private $args;
 
-  public function parse(array $args)
+  function __construct(array $args)
   {
-    if (sizeof($args) == 1) {
+    $this->args = $this->removeFilePathFromArgs($args);
+  }
+
+  public function parse()
+  {
+    if (empty($this->args)) {
       throw new RangeArgumentNotFoundException();
     }
 
-    $rangeArgument = $args[1];
+    $rangeArgument = $this->args[0];
     if (!is_numeric($rangeArgument)) {
       throw new NonNumericRangeArgumentException();
     }
 
-    if (sizeof($args) > 5) {
+    if (sizeof($this->args) > 4) {
       throw new InvalidRuleArgumentException();
     }
 
-    $ruleArguments = array_slice($args, 2);
+    $ruleArguments = array_slice($this->args, 1);
     return new ParsedArgs(
       $this->parseRangeArgument($rangeArgument),
       $this->parseRuleArguments($ruleArguments)
@@ -56,6 +62,11 @@ class ArgsParser
       return RuleParameter::FIZZ_BUZZ_FIZZBUZZ;
     }
     throw new InvalidRuleArgumentException();
+  }
+
+  private function removeFilePathFromArgs(array $args)
+  {
+    return array_slice($args, 1);
   }
 
   private function valid(string $firstRuleArgument)

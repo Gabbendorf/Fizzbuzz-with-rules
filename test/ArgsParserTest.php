@@ -12,18 +12,14 @@ use PHPUnit\Framework\TestCase;
 
 class ArgsParserTest extends TestCase
 {
-
-   function setUp() {
-     $this->argsParser = new ArgsParser();
-   }
-
   /**
    * @expectedException \gabi\fizzbuzz\exceptions\RangeArgumentNotFoundException
    */
   public function testRangeArgumentShouldBeThere() {
     $argsWithoutRangeArgument = array("file path");
+    $argsParser = new ArgsParser($argsWithoutRangeArgument);
 
-    $this->argsParser->parse($argsWithoutRangeArgument);
+    $argsParser->parse();
   }
 
   /**
@@ -31,30 +27,34 @@ class ArgsParserTest extends TestCase
    */
   public function testRangeArgumentIsANumber() {
     $argsWithNonNumericRangeArgument = array("file path", "no number");
+    $argsParser = new ArgsParser($argsWithNonNumericRangeArgument);
 
-    $this->argsParser->parse($argsWithNonNumericRangeArgument);
+    $argsParser->parse($argsWithNonNumericRangeArgument);
   }
 
   public function testCreatesRangeOfNumbersOutOfRangeArgument() {
     $argsWithNumericRangeArgument = array("file path", "2");
+    $argsParser = new ArgsParser($argsWithNumericRangeArgument);
 
-    $parsedArgs = $this->argsParser->parse($argsWithNumericRangeArgument);
+    $parsedArgs = $argsParser->parse($argsWithNumericRangeArgument);
 
     $this->assertSame(array("1", "2"), $parsedArgs->getNumericRange());
   }
 
   public function testCreatesDefaultRuleForNoRuleArgumentsPassed() {
     $argsWithNoRuleArgument = array("file path", "2");
+    $argsParser = new ArgsParser($argsWithNoRuleArgument);
 
-    $parsedArgs = $this->argsParser->parse($argsWithNoRuleArgument);
+    $parsedArgs = $argsParser->parse($argsWithNoRuleArgument);
 
     $this->assertSame("default", $parsedArgs->getRule());
   }
 
   public function testCreatesRuleOutOfSingleRuleArgument() {
     $argsWithSingleRuleArgument = array("file path", "2", "fizz");
+    $argsParser = new ArgsParser($argsWithSingleRuleArgument);
 
-    $parsedArgs = $this->argsParser->parse($argsWithSingleRuleArgument);
+    $parsedArgs = $argsParser->parse($argsWithSingleRuleArgument);
 
     $this->assertSame(RuleParameter::FIZZ, $parsedArgs->getRule());
   }
@@ -64,14 +64,16 @@ class ArgsParserTest extends TestCase
    */
   public function testFirstRuleArgumentShouldBeFizzBuzzOrFizzbuzz() {
     $argsWithInvalidFirstRuleArgument = array("file path", "2", "invalid first rule argument");
+    $argsParser = new ArgsParser($argsWithInvalidFirstRuleArgument);
 
-    $this->argsParser->parse($argsWithInvalidFirstRuleArgument);
+    $argsParser->parse($argsWithInvalidFirstRuleArgument);
   }
 
   public function testCreatesFizzAndBuzzRuleOutOfFizzAndBuzzRuleArguments() {
     $argsWith2ValidRuleArguments = array("file path", "2", "fizz", "buzz");
+    $argsParser = new ArgsParser($argsWith2ValidRuleArguments);
 
-    $parsedArgs = $this->argsParser->parse($argsWith2ValidRuleArguments);
+    $parsedArgs = $argsParser->parse($argsWith2ValidRuleArguments);
 
     $this->assertSame(RuleParameter::FIZZ_BUZZ, $parsedArgs->getRule());
   }
@@ -81,14 +83,16 @@ class ArgsParserTest extends TestCase
    */
   public function testFirstRuleArgumentShouldBeFizzAndSecondArgumentRuleShouldBeBuzz() {
     $invalidCombinationOf2RuleArguments = array("file path", "2", "fizz", "not buzz");
+    $argsParser = new ArgsParser($invalidCombinationOf2RuleArguments);
 
-    $this->argsParser->parse($invalidCombinationOf2RuleArguments);
+    $argsParser->parse($invalidCombinationOf2RuleArguments);
   }
 
   public function testCreatesFizzBuzzAndFizzbuzzRuleOutOfFizzBuzzAndFizzbuzzRuleArguments() {
     $argsWith3ValidRuleArguments = array("file path", "2", "fizz", "buzz", "fizzbuzz");
+    $argsParser = new ArgsParser($argsWith3ValidRuleArguments);
 
-    $parsedArgs = $this->argsParser->parse($argsWith3ValidRuleArguments);
+    $parsedArgs = $argsParser->parse($argsWith3ValidRuleArguments);
 
     $this->assertSame(RuleParameter::FIZZ_BUZZ_FIZZBUZZ, $parsedArgs->getRule());
   }
@@ -98,8 +102,9 @@ class ArgsParserTest extends TestCase
    */
   public function testThreeRuleArgumentsCombinationShouldBeFizzBuzzAndFizzbuzz() {
     $invalidCombinationOf3RuleArguments = array("file path", "2", "fizz", "not buzz", "not fizzbuzz");
+    $argsParser = new ArgsParser($invalidCombinationOf3RuleArguments);
 
-    $this->argsParser->parse($invalidCombinationOf3RuleArguments);
+    $argsParser->parse($invalidCombinationOf3RuleArguments);
   }
 
   /**
@@ -107,7 +112,8 @@ class ArgsParserTest extends TestCase
    */
   public function testMoreThan3RuleArgumentsAreNotAllowed() {
     $tooManyRuleArguments = array("file path", "2", "fizz", "buzz", "fizzbuzz", "fizz again");
+    $argsParser = new ArgsParser($tooManyRuleArguments);
 
-    $this->argsParser->parse($tooManyRuleArguments);
+    $argsParser->parse($tooManyRuleArguments);
   }
 }
