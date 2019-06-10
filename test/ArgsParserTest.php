@@ -9,7 +9,8 @@ use gabi\fizzbuzz\exceptions\NonNumericRangeArgumentException;
 use gabi\fizzbuzz\exceptions\InvalidRuleArgumentException;
 use PHPUnit\Framework\TestCase;
 
-class ArgsParserTest extends TestCase {
+class ArgsParserTest extends TestCase
+{
 
    function setUp() {
      $this->argsParser = new ArgsParser();

@@ -10,7 +10,8 @@ use gabi\fizzbuzz\CombinedRule;
 use gabi\fizzbuzz\RuleParameter;
 use PHPUnit\Framework\TestCase;
 
-class RuleFactoryTest extends TestCase {
+class RuleFactoryTest extends TestCase
+{
 
    function setUp() {
      $this->ruleFactory = new RuleFactory();

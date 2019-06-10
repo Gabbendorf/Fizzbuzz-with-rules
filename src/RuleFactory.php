@@ -2,8 +2,9 @@
 
 namespace gabi\fizzbuzz;
 
-class RuleFactory {
-  public function createFrom($ruleParameter)
+class RuleFactory
+{
+  public function createFrom(string $ruleParameter)
   {
     switch($ruleParameter) {
     case "fizz":

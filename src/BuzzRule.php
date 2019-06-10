@@ -2,7 +2,8 @@
 
 namespace gabi\fizzbuzz;
 
-class BuzzRule implements Rule {
+class BuzzRule implements Rule
+{
   public function transform(array $numbers)
   {
     return array_map(array($this, "buzz"), $numbers);

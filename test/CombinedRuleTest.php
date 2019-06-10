@@ -10,7 +10,8 @@ use gabi\fizzbuzz\FizzRule;
 use gabi\fizzbuzz\BuzzRule;
 use PHPUnit\Framework\TestCase;
 
-class CombinedRuleTest extends TestCase {
+class CombinedRuleTest extends TestCase
+{
   public function testTransformsNumbersAccordingToTwoRulesCombined() {
     $fizzBuzzCombinedRule = new CombinedRule(new FizzRule(), new BuzzRule());
 

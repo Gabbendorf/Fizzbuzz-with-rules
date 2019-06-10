@@ -5,7 +5,8 @@ namespace unit\gabi\fizzbuzz;
 use gabi\fizzbuzz\BuzzRule;
 use PHPUnit\Framework\TestCase;
 
-class BuzzRuleTest extends TestCase {
+class BuzzRuleTest extends TestCase
+{
   public function testTransformsMultiplesOf5InListIntoBuzz() {
     $buzzRule = new BuzzRule();
 

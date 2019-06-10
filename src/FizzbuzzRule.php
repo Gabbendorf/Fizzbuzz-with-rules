@@ -2,7 +2,8 @@
 
 namespace gabi\fizzbuzz;
 
-class FizzbuzzRule implements Rule {
+class FizzbuzzRule implements Rule
+{
   public function transform(array $numbers)
   {
     return array_map(array($this, "fizzbuzz"), $numbers);

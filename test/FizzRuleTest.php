@@ -5,7 +5,8 @@ namespace unit\gabi\fizzbuzz;
 use gabi\fizzbuzz\FizzRule;
 use PHPUnit\Framework\TestCase;
 
-class FizzRuleTest extends TestCase {
+class FizzRuleTest extends TestCase
+{
   public function testTransformsMultiplesOf3InListIntoFizz() {
     $fizzRule = new FizzRule();
 

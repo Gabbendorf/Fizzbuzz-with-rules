@@ -2,7 +2,8 @@
 
 namespace gabi\fizzbuzz;
 
-class CombinedRule implements Rule {
+class CombinedRule implements Rule
+{
   private $firstRule;
   private $secondRule;
 

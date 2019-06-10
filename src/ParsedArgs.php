@@ -2,11 +2,12 @@
 
 namespace gabi\fizzbuzz;
 
-class ParsedArgs {
+class ParsedArgs
+{
   private $numericRange;
   private $rule;
 
-  function __construct(array $numericRange, $rule)
+  function __construct(array $numericRange, string $rule)
   {
     $this->numericRange = $numericRange;
     $this->rule= $rule;

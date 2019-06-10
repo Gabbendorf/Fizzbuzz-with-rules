@@ -6,7 +6,8 @@ use gabi\fizzbuzz\exceptions\RangeArgumentNotFoundException;
 use gabi\fizzbuzz\exceptions\NonNumericRangeArgumentException;
 use gabi\fizzbuzz\exceptions\InvalidRuleArgumentException;
 
-class ArgsParser {
+class ArgsParser
+{
   public function parse(array $args)
   {
     if (sizeof($args) == 1) {
